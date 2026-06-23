@@ -906,7 +906,14 @@ export default function App() {
                   return (
                     <div 
                       key={f.n} 
-                      className={`overflow-hidden border rounded-xl transition-all duration-300 w-full ${
+                      onClick={() => {
+                        if (isExpanded) {
+                          f.action();
+                        } else {
+                          setActiveSubTab(f.keyIndex);
+                        }
+                      }}
+                      className={`overflow-hidden border rounded-xl transition-all duration-300 w-full cursor-pointer ${
                         f.highlight 
                           ? 'bg-[#1c2c46] text-white border-white/10' 
                           : f.isCommodities 
@@ -914,24 +921,14 @@ export default function App() {
                             : 'bg-white text-[#1c2c46] border-black/5'
                       } ${isExpanded ? 'ring-1 ring-[#1d9878]/50 shadow-[0_4px_16px_rgba(29,152,120,0.1)]' : ''}`}
                     >
-                      {/* Accordion Header Button */}
-                      <button
-                        onClick={() => {
-                          setActiveSubTab(f.keyIndex);
-                        }}
-                        className={`w-full flex items-center justify-between p-4 cursor-pointer transition-colors ${
+                      {/* Accordion Header Container */}
+                      <div
+                        className={`w-full flex items-center justify-between p-4 transition-colors ${
                           lang === 'ar' ? 'flex-row-reverse text-right' : 'text-left'
                         }`}
                         style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
                       >
                         <div className={`flex items-center gap-3 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-                          <span className={`text-[9px] font-black tracking-wider px-2 py-0.5 rounded transition-colors ${
-                            f.highlight 
-                              ? 'bg-white/10 text-[#1d9878]' 
-                              : 'bg-[#1d9878]/10 text-[#1d9878]'
-                          }`}>
-                            {f.n}
-                          </span>
                           <span className="text-[11px] font-black tracking-[1px] uppercase">
                             {f.title}
                           </span>
@@ -939,7 +936,7 @@ export default function App() {
                         <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`}>
                           <ChevronRight size={14} className="text-[#1d9878]" />
                         </div>
-                      </button>
+                      </div>
 
                       {/* Accordion Panels content */}
                       <AnimatePresence initial={false}>
@@ -968,17 +965,13 @@ export default function App() {
                                 {f.desc}
                               </p>
                               
-                              <button 
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  f.action();
-                                }}
-                                className={`inline-flex items-center gap-2 text-[9px] font-bold tracking-[2px] uppercase text-[#1d9878] hover:text-[#157159] cursor-pointer mt-1 self-start ${
+                              <div 
+                                className={`inline-flex items-center gap-2 text-[9px] font-bold tracking-[2px] uppercase text-[#1d9878] mt-1 self-start ${
                                   lang === 'ar' ? 'flex-row-reverse' : ''
                                 }`}
                               >
                                 {f.btnLabel} {lang === 'ar' ? <ArrowRight size={11} strokeWidth={3} className="rotate-180" /> : <ArrowRight size={11} strokeWidth={3} />}
-                              </button>
+                              </div>
                             </div>
                           </motion.div>
                         )}
@@ -1008,8 +1001,6 @@ export default function App() {
                       `}
                       data-d={3 + i}
                     >
-                      <div className={`absolute top-5 ${lang === 'ar' ? 'left-6 text-left' : 'right-6 text-right'} text-5xl lg:text-3xl font-black tracking-[-3px] leading-none transition-colors duration-300 ${f.highlight ? 'text-white/5 group-hover:text-[#1d9878]/10' : 'text-[#1c2c46]/5 group-hover:text-[#1d9878]/10'}`}>{f.n}</div>
-                      
                       <div>
                         {/* Subsidiary Corporate Logo (takes up 45% of the card) */}
                         <div className="h-28 lg:h-[180px] w-full mb-6 flex items-center justify-start select-none">

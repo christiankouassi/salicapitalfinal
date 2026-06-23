@@ -302,9 +302,6 @@ export default function FonciereDassouli({ onBack, currentSection, onGoToSection
 
                 {/* Text overlay bottom info block */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-12 pb-5 px-6 flex flex-col justify-end text-start select-none z-10">
-                  <span className="text-[10px] lg:text-[11px] font-extrabold tracking-[2px] text-[#1d9878] mb-1.5 uppercase">
-                    {photos[activeImage].title}
-                  </span>
                   <p className="text-white text-[12.5px] lg:text-[13.5px] font-medium leading-relaxed">
                     {photos[activeImage].desc}
                   </p>

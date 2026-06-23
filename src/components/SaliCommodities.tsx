@@ -218,7 +218,7 @@ export default function SaliCommodities({ onBack, currentSection, onGoToSection,
       name: t.commodities.products.onion.name,
       category: t.commodities.products.onion.cat,
       desc: t.commodities.products.onion.desc,
-      image: 'https://images.unsplash.com/photo-1620574387735-3624d75b2dbc?auto=format&fit=crop&q=80&w=800'
+      image: 'https://i.pinimg.com/1200x/14/0b/7c/140b7c705d5162b1c84814a1b4b05e8c.jpg'
     }
   ];
   const handleSubmit = (e: React.FormEvent) => {
