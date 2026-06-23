@@ -379,7 +379,7 @@ export const translations: Record<Language, TranslationDictionary> = {
         },
         dassouli: {
           title: "Foncière Dassouli",
-          desc: "société immobilière, spécialisée dans l’investissement locatif en locaux commerciaux.",
+          desc: "Société immobilière, spécialisée dans l’investissement locatif en locaux commerciaux.",
           btn: "En savoir plus"
         }
       }
@@ -389,12 +389,12 @@ export const translations: Record<Language, TranslationDictionary> = {
       spanFuture: "",
       tag: "Contactez-nous",
       phone: "Téléphone",
-      email: "Email",
-      formTitle: "Un projet ? Écrivez-nous",
+      email: "E-MAIL",
+      formTitle: "Un intérêt ou une synergie avec l’une de nos filiales? Écrivez-nous.",
       formTitleCommodities: "Vous avez de l’intérêt sur l’un de nos produits ? Vous avez des produits à nous proposer ? Écrivez-nous",
       formTitleDassouli: "Intéressés ? Demandez une visite ou un complément d'information",
       fullName: "Nom complet",
-      emailLabel: "Email",
+      emailLabel: "E-MAIL",
       phoneLabel: "Téléphone",
       subjectLabel: "Sujet",
       messageLabel: "Message",
@@ -402,7 +402,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       roleLabel: "Profil / rôle",
       conceptLabel: "Enseigne",
       placeholderName: "Votre nom...",
-      placeholderEmail: "votre@email.com",
+      placeholderEmail: "Votre adresse e-mail",
       placeholderPhone: "Votre numéro de téléphone",
       placeholderSubject: "Comment pouvons-nous vous aider ?",
       placeholderMessage: "Comment pouvons-nous vous aider ?",
@@ -555,7 +555,7 @@ export const translations: Record<Language, TranslationDictionary> = {
           desc: "Avocats hass crémeux de premier choix récoltés avec professionnalisme et exportés sous contrôle strict."
         },
         cashew: {
-          name: "Noix de cajou premium",
+          name: "Noix de cajou",
           cat: "Produits d’Afrique",
           desc: "Noix de cajou brutes de haute qualité sélectionnées minutieusement auprès de nos coopératives partenaires."
         },

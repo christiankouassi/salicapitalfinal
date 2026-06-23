@@ -105,7 +105,7 @@ export default function App() {
       const hash = window.location.hash;
       if (path === '/salicommodities' || hash === '#salicommodities') {
         setActivePage('commodities');
-      } else if (path === '/dassouli' || hash === '#dassouli') {
+      } else if (path === '/dassouli' || hash === '#dassouli' || path === '/foncieredassouli' || hash === '#foncieredassouli') {
         setActivePage('dassouli');
       } else {
         setActivePage('main');
@@ -121,20 +121,20 @@ export default function App() {
     };
   }, []);
 
-  const changePage = (page: 'main' | 'commodities' | 'dassouli') => {
+  const changePage = (page: 'main' | 'commodities' | 'dassouli', targetSection: number = 0) => {
     transitionLockRef.current = false;
     hasTriggeredSwipeRef.current = false;
     setActivePage(page);
-    setCurrentSection(0);
+    setCurrentSection(targetSection);
     if (page === 'commodities') {
       safePushState(null, '#salicommodities');
     } else if (page === 'dassouli') {
-      safePushState(null, '#dassouli');
+      safePushState(null, '#foncieredassouli');
     } else {
       safePushState(null, window.location.pathname);
-      setCurrentSection(2); // Slide directly to section index 2 ("Nos Filiales")
       setTimeout(() => {
-        triggerAnimationsWithRetry('expertise');
+        const sectionId = Config.PAGES_CONFIG.main.sections[targetSection] || 'hero';
+        triggerAnimationsWithRetry(sectionId);
       }, 150);
     }
   };
@@ -408,7 +408,7 @@ export default function App() {
         <div className="flex items-center gap-3">
           {activePage !== 'main' && !isMenuOpen && (
             <button
-              onClick={() => changePage('main')}
+              onClick={() => changePage('main', 2)}
               className="w-12 h-12 border border-[#1d9878]/30 rounded-full flex items-center justify-center text-[#1d9878] bg-white hover:bg-[#1d9878]/5 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm shadow-[#1d9878]/5"
               title={t.sidebar.backBtn}
             >
@@ -475,7 +475,7 @@ export default function App() {
                 {/* Back button (just arrow, no text) */}
                 <button
                   id="nav-back-button"
-                  onClick={() => changePage('main')}
+                  onClick={() => changePage('main', 2)}
                   className="mt-2.5 p-2 rounded-full border border-[#1c2c46]/10 bg-[#1c2c46]/5 text-[#1c2c46] hover:text-white hover:border-[#1d9878] hover:bg-[#1d9878] hover:scale-110 transition-all cursor-pointer flex items-center justify-center shadow-md hover:shadow-[#1d9878]/25"
                   title={t.sidebar.backBtn}
                 >
@@ -1128,7 +1128,7 @@ export default function App() {
                               value={formEmail}
                               onChange={e => setFormEmail(e.target.value)}
                               className="w-full bg-[#ebf1f8] border border-[#d3dfed] px-4 py-3 text-[12px] lg:text-[12.5px] outline-none focus:bg-white focus:border-[#1d9878] transition-all rounded-lg text-[#1c2c46]" 
-                              placeholder="votre@email.com" 
+                              placeholder={t.contact.placeholderEmail} 
                             />
                           </div>
 
@@ -1202,7 +1202,7 @@ export default function App() {
             className="fixed inset-0 z-[400] overflow-hidden"
           >
             <SaliCommodities 
-              onBack={() => changePage('main')} 
+              onBack={() => changePage('main', 2)} 
               currentSection={currentSection} 
               onGoToSection={(index) => goToSection(index)}
               lang={lang} 
@@ -1219,7 +1219,7 @@ export default function App() {
             className="fixed inset-0 z-[400] overflow-hidden"
           >
             <FonciereDassouli 
-              onBack={() => changePage('main')} 
+              onBack={() => changePage('main', 2)} 
               currentSection={currentSection} 
               onGoToSection={(index) => goToSection(index)}
               lang={lang}

@@ -419,7 +419,7 @@ export default function FonciereDassouli({ onBack, currentSection, onGoToSection
                           value={formData.email}
                           onChange={e => setFormData({...formData, email: e.target.value})}
                           className="w-full bg-[#ebf1f8] border border-[#d3dfed] px-4 py-3 text-[12px] lg:text-[12.5px] outline-none focus:bg-white focus:border-[#1d9878] transition-all rounded-lg text-[#1c2c46]" 
-                          placeholder="nom@entreprise.com" 
+                          placeholder={t.contact.placeholderEmail} 
                         />
                       </div>
                       <div className="ae ae-up flex flex-col gap-1.5" data-d="4.5">
